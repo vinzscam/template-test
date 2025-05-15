@@ -1,0 +1,61 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: wait-template
+  title: Wait template
+  description: Just debug template
+  tags:
+spec:
+  owner: vinzscam
+  type: website
+  parameters:
+    - title: Provide some simple information
+      required:
+        - component_id
+        - owner
+      properties:
+        component_id:
+          title: Name
+          type: string
+          description: Unique name of the component
+          ui:field: EntityNamePicker
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this website is for.
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+  steps:
+    - id: template
+      name: Fetch Skeleton + Template
+      action: fetch:template
+      input:
+        url: https://github.com/external-spotify-portal-demo/templates/tree/software-catalog-onboarding/create-react-app/skeleton
+        copyWithoutRender:
+          - .github/workflows/*
+        values:
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          owner: ${{ parameters.owner }}
+    - action: debug:wait
+      id: wait-5sec
+      name: Waiting for 5 seconds
+      input:
+        seconds: 5
+    - action: debug:wait
+      id: wait-5sec
+      name: Waiting 1 minute
+      input:
+        minutes: 1
+    - action: debug:wait
+      id: wait-5sec
+      name: Waiting 30 seconds
+      input:
+        seconds: 30
