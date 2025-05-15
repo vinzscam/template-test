@@ -4,7 +4,7 @@ metadata:
   name: wait-template
   title: Wait template
   description: Just debug template
-  tags:
+  tags: []
 spec:
   owner: vinzscam
   type: website
