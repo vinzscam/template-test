@@ -45,17 +45,17 @@ spec:
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
     - action: debug:wait
-      id: wait-5sec
+      id: wait-5-secs
       name: Waiting for 5 seconds
       input:
         seconds: 5
     - action: debug:wait
-      id: wait-5sec
+      id: wait-1-minute
       name: Waiting 1 minute
       input:
         minutes: 1
     - action: debug:wait
-      id: wait-5sec
+      id: wait-30-secs
       name: Waiting 30 seconds
       input:
         seconds: 30
