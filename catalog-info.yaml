@@ -1,0 +1,8 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vincenzo-template-test
+spec:
+  type: website
+  owner: vincenzos
+  lifecycle: experimental
