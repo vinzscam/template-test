@@ -5,23 +5,17 @@ metadata:
   name: github-mcp
   description: This server provides access to Github.
   annotations:
-    'mcp.spotify.com/auth-api-id': 'core.auth.github'
-    'mcp.spotify.com/auth-scopes': '["repo","read:packages","read:org"]'
+    mcp.spotify.com/schema-version: '2025-09-29'
+    mcp.spotify.com/auth-api-id: 'core.auth.github'
+    mcp.spotify.com/auth-scopes: '["repo","read:packages","read:org"]'
 spec:
   type: mcp-server
   lifecycle: production
-  owner: ai-knowledge-assistance
+  owner: vinzscam
   definition: |
-    {
-      "name": "github-mcp",
-      "description": "This server provides access to GitHub.",
-      "version_detail": {
-        "version": "0.0.1"
-      },
-      "remotes": [
-        {
-          "transport_type": "streamable",
-          "url": "https://api.githubcopilot.com/mcp/"
-        }
-      ]
-    }
+    name: com.spotify/github-mcp
+    description: "This server provides access to Github."
+    version: "0.0.1"
+    remotes:
+      - type: streamable-http
+        url: "https://api.githubcopilot.com/mcp"
