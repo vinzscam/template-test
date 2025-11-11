@@ -11,7 +11,7 @@ metadata:
 spec:
   type: mcp-server
   lifecycle: production
-  owner: vinzscam
+  owner: user:default/vinzscam
   definition: |
     name: com.spotify/github-mcp
     description: "This server provides access to Github."
