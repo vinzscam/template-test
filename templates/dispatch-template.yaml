@@ -38,3 +38,4 @@ spec:
       input:
         repoUrl: github.com?repo=template-test&owner=vinzscam
         workflowId: blank.yml
+        branchOrTagName: master
