@@ -1,0 +1,40 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: dispatch-template
+  title: Dispatch template
+  description: Just an example for invoking GitHub actions
+  tags: []
+spec:
+  owner: vinzscam
+  type: infrastructure
+  parameters:
+    - title: Provide some simple information
+      required:
+        - component_id
+        - owner
+      properties:
+        component_id:
+          title: Name
+          type: string
+          description: Unique name of the component
+          ui:field: EntityNamePicker
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this website is for.
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+  steps:
+    - id: dispatch
+      name: Invoke a workflow
+      action: github:actions:dispatch
+      input:
+        repoUrl: github.com?repo=template-test&owner=vinzscam
+        workflowId: blank.yml
