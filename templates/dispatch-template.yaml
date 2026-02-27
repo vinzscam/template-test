@@ -23,14 +23,15 @@ spec:
           title: Description
           type: string
           description: Help others understand what this website is for.
-        owner:
-          title: Owner
+        repoUrl:
+          title: Repository Location
           type: string
-          description: Owner of the component
-          ui:field: OwnerPicker
+          ui:field: RepoUrlPicker
           ui:options:
-            allowedKinds:
-              - Group
+            allowedHosts:
+              - github.com
+            requestUserCredentials:
+              secretsKey: USER_OAUTH_TOKEN
   steps:
     - id: dispatch
       name: Invoke a workflow
@@ -39,3 +40,4 @@ spec:
         repoUrl: github.com?repo=template-test&owner=vinzscam
         workflowId: blank.yml
         branchOrTagName: master
+        token: ${{ secrets.USER_OAUTH_TOKEN }}
