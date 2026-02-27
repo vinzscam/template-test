@@ -12,7 +12,6 @@ spec:
     - title: Provide some simple information
       required:
         - component_id
-        - owner
       properties:
         component_id:
           title: Name
