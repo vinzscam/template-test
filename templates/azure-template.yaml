@@ -1,8 +1,8 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: example-template
-  title: Example Template
+  name: azure-template
+  title: Azure Template
   description: An example template for the scaffolder
 spec:
   owner: user:default/vinzscam
