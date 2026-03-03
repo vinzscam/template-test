@@ -1,0 +1,52 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: example-template
+  title: Example Template
+  description: An example template for the scaffolder
+spec:
+  owner: user:default/vinzscam
+  type: service
+
+  parameters:
+    - title: Fill in some steps
+      required:
+        - name
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - dev.azure.com
+            allowedOrganizations:
+              - vinzscam
+            allowedProjects:
+              - vinzscam
+            requestUserCredentials:
+              secretsKey: USER_OAUTH_TOKEN
+        repository:
+          type: string
+          ui:field: RepoOwnerPicker
+          ui:options:
+            host: dev.azure.com
+            requestUserCredentials:
+              secretsKey: USER_OAUTH_TOKEN
+        name:
+          title: Component name
+          type: string
+          description: Unique name of the component
+  steps:
+    - action: debug:log
+      id: log-message
+      name: Log Message
+      input:
+        message: 'Hello, ${{ parameters.name }}!'
+    - action: azure:pr:create
+      id: create-pr
+      name: Create Pull Request
+      input:
+        title: Add catalog-info.yaml
+        repoName: ADD_REPONAME
+        project: ADD_PROJECT
